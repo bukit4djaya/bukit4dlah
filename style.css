@@ -1,0 +1,380 @@
+:root {
+    --primary: #ffcc00;
+    --secondary: #e74c3c;
+    --dark-bg: #000;
+    --card-bg: #1a1a1a;
+    --text-color: #fff;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background: #111;
+    padding: 15px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+.promo-banner {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.2);
+}
+
+/* Tombol Dasar */
+.btn-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.btn {
+    position: relative;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-login { background: var(--primary); color: #000; }
+.btn-reg { background: var(--secondary); color: #fff; }
+
+/* Efek Membesar */
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* Efek Shine (Kilap) */
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: rotate(30deg);
+    transition: none;
+}
+
+.btn:hover::after {
+    left: 150%;
+    transition: all 0.7s ease-in-out;
+}
+
+/* Styling Countdown */
+.timer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.timer-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    transition: 0.3s;
+}
+
+.timer-card:hover {
+    border-color: var(--primary);
+}
+
+.timer-card h4 {
+    margin: 0 0 10px;
+    color: var(--primary);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.countdown {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #00ff00; /* Warna hijau neon khas jam digital */
+}
+
+.content-box {
+    text-align: left;
+    background: #0d0d0d;
+    padding: 25px;
+    border-radius: 10px;
+    line-height: 1.7;
+    border-left: 4px solid var(--primary);
+}
+/* Styling untuk pembungkus banner */
+.banner-link {
+    display: inline-block; /* Agar link mengikuti ukuran gambar */
+    text-decoration: none;
+    transition: transform 0.3s ease; /* Durasi efek membesar */
+    cursor: pointer;
+}
+
+/* Efek membesar saat di-hover */
+.banner-link:hover {
+    transform: scale(1.05); /* Membesar 5%, jangan terlalu besar agar tetap rapi */
+}
+
+/* Memastikan gambar di dalamnya responsif */
+.promo-banner {
+    width: 100%;
+    max-width: 350px; /* Sesuaikan dengan kebutuhan */
+    border-radius: 10px;
+    display: block;
+}
+/* Container untuk membatasi area teks berjalan */
+.running-container {
+    background: rgba(255, 204, 0, 0.1); /* Background transparan kuning tipis */
+    border-top: 1px solid var(--primary);
+    border-bottom: 1px solid var(--primary);
+    overflow: hidden; /* Sembunyikan teks yang keluar batas */
+    white-space: nowrap;
+    padding: 10px 0;
+    margin-top: 10px;
+}
+
+/* Animasi Teks */
+.running-text {
+    display: inline-block;
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 0.95rem;
+    padding-left: 100%; 
+    /* Ubah dari 15s menjadi 30s agar gerakannya 2x lebih lambat */
+    animation: jalan-samping 30s linear infinite; 
+}
+
+/* Logika Pergerakan tetap sama */
+@keyframes jalan-samping {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); } /* Ditambah agar teks benar-benar habis keluar layar */
+}
+
+/* Tetap gunakan ini agar teks berhenti saat kursor di atasnya */
+.running-container:hover .running-text {
+    animation-play-state: paused;
+}
+/* Container untuk banner di bawah timer */
+.banner-bawah {
+    margin: 20px 0 40px 0; /* Jarak atas 20px, jarak bawah 40px */
+    text-align: center;
+}
+
+/* Pastikan banner-link tetap memiliki efek membesar seperti yang sebelumnya */
+.banner-bawah .banner-link:hover {
+    transform: scale(1.05);
+}
+
+.banner-bawah .promo-banner {
+    width: 100%;
+    max-width: 800px; /* Buat lebih lebar dari banner atas agar terlihat beda */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 204, 0, 0.3); /* Efek cahaya kuning */
+}
+/* Footer Styling */
+.main-footer {
+    background-color: #0a0a0a;
+    padding: 50px 0 20px;
+    border-top: 3px solid var(--primary);
+    margin-top: 50px;
+    text-align: left; /* Teks footer rata kiri sesuai gambar */
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex; /* Ini yang membuat menjadi ROW */
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-col {
+    flex: 1; /* Memberi ruang yang sama tiap kolom */
+    min-width: 250px;
+}
+
+.footer-col h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #bbb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.apk-download {
+    width: 100px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--primary);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    margin-top: 30px;
+    border-top: 1px solid #222;
+    color: #666;
+    font-size: 0.8rem;
+}
+
+/* Tombol WA Melayang */
+.wa-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: 0.3s;
+}
+
+.wa-float:hover {
+    transform: translateY(-5px);
+}
+
+.wa-float img { width: 25px; }
+/* Artikel Style */
+        .article-container { 
+            max-width: 700px; margin: 30px auto; padding: 25px 20px; 
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 15px; border: 1px solid rgba(255,251,0,.687); 
+            box-shadow: 0 0 15px rgba(0,0,0,0.7); color: #fcfcfc; line-height: 1.7; position: relative; overflow: hidden;
+        }
+        .article-container a { color: #00ffbf; text-decoration: underline !important; transition: all .3s ease; }
+        .article-container a:hover { color: #eaffef; text-shadow: 0 0 6px #00ffbf; }
+        
+        .article-container::after {
+            content: ""; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-20deg); animation: shineArticle 3s infinite; pointer-events: none; mix-blend-mode: screen;
+        }
+@keyframes shineArticle { 0% { left: -150%; } 100% { left: 150%; } }
+/* FAQ & Testimoni Style */
+        .BUKIT4D-section { 
+            max-width: 1200px; margin: 40px auto; padding: 30px 20px; 
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 18px; border: 2px solid #fffb00; 
+            box-shadow: 0 0 25px rgba(238,255,0,.2); color: #fff; position: relative; overflow: hidden;
+        }
+        
+        .BUKIT4D-section::before {
+            content: ""; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(120deg, rgba(167, 139, 250, 0) 0%, rgba(200, 183, 255, 0.33) 50%, rgba(167, 139, 250, 0) 100%);
+            transform: skewX(-20deg); animation: shine 3s infinite; mix-blend-mode: screen; pointer-events: none;
+        }
+        @keyframes shine { 0% { left: -150%; } 100% { left: 150%; } }
+
+        .BUKIT4D-section h2 { text-align: center; font-size: 28px; color: #fcd600; text-shadow: 0 0 6px rgba(255,251,0,.6); margin-bottom: 30px; }
+        
+        .BUKIT4D-faq details { background: #220022; border-radius: 12px; margin-bottom: 16px; padding: 18px 22px; border: 1px solid #fe0; transition: .3s ease; }
+        .BUKIT4D-faq summary { cursor: pointer; font-size: 16px; font-weight: 600; color: #fff; outline: none; }
+        .BUKIT4D-faq details p { margin-top: 12px; color: #ddd; font-size: 14px; }
+
+        .testimoni-wrapper { display: grid; grid-template-columns: 1fr; gap: 25px; margin-top: 40px; }
+        @media (min-width: 600px) { .testimoni-wrapper { grid-template-columns: 1fr 1fr; } }
+        
+        .testimoni-wrapper blockquote { 
+            background: #220022; border-left: 5px solid #ffe600; border-radius: 12px; 
+            padding: 22px 26px; min-height: 100px; position: relative; 
+            box-shadow: 0 0 14px rgba(255,238,2,.2); margin: 0; color: white; border: 1px solid #440044;
+        }
+        .testimoni-wrapper cite { display: block; margin-top: 18px; font-weight: bold; color: #fffb00; text-align: right; font-style: normal; }
+        /* Footer Fixed */
+        .shura-gacor-fixed-footer { 
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; 
+            display: flex; justify-content: space-evenly; align-items: center; 
+            padding: 12px 0; background: linear-gradient(180deg,#000 0%,#000 100%); 
+            border-top: 2px solid rgba(255, 215, 0, 0.5); border-radius: 20px 20px 0 0;
+            box-shadow: 0 -3px 18px rgba(255,217,0,.25);
+        }
+        .shura-gacor-fixed-footer a { 
+            flex: 1; max-width: 90px; text-align: center; text-decoration: none; 
+            color: #fff; display: flex; flex-direction: column; align-items: center; 
+            gap: 4px; font-size: 12px; font-weight: 700; text-shadow: 0 0 6px #ffe600;
+        }
+        .shura-gacor-fixed-footer img { width: 26px; height: 26px; filter: drop-shadow(0 0 5px #ffc400); }
+        .tada img { animation: tada 1.5s infinite; }
+        @keyframes tada { 0% {transform: scale(1);} 10%, 20% {transform: scale(0.9) rotate(-3deg);} 30%, 50%, 70%, 90% {transform: scale(1.1) rotate(3deg);} 40%, 60%, 80% {transform: scale(1.1) rotate(-3deg);} 100% {transform: scale(1) rotate(0);} }
+        #dollar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.dollar {
+    position: absolute;
+    color: #2e7d32; /* Warna hijau dollar */
+    font-weight: bold;
+    font-size: 24px;
+    user-select: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}

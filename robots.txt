@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bukit4dnih.pages.dev/sitemap.xml
